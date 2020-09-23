@@ -1,38 +1,279 @@
+*{
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 .App {
+  font-family: sans-serif;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #aec6cf;
+  width: 100vw;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.wrapp {
+  width: 50%;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1{
+  color: #aec6cf;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
 }
+
+.time-check {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.time-check .f12,
+.time-check .f24 {
+  display: flex;
+  align-items: center;
+}
+
+.time-check .f12 .f12-wrapp,
+.time-check .f24 .f24-wrapp {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.time-check input[type="checkbox"] {
+  appearance: none;
+}
+
+.time-check input[type="checkbox"]:checked + label {
+  background-image: url("https://www.flaticon.com/svg/static/icons/svg/1828/1828643.svg");
+  background-position: center;
+  background-size: 75%;
+  background-repeat: no-repeat;
+}
+
+.time{
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-pick{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  width: 100%;
+  max-width: 200px;
+  padding: 10px;
+  border: 1px solid #aec6cf;
+  border-radius: 20px;
+}
+
+.t-pick .hour,
+.t-pick .minutes{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.t-pick .hour span,
+.t-pick .minutes span{
+  font-size: 2rem;
+  color: #ccc;
+}
+
+.t-pick .hour .hr,
+.t-pick .minutes .min{
+  background: none;
+  font-size: 2rem;
+  appearance: none;
+  border: none;
+  outline: none;
+  display: block;
+  width: 100%;
+  padding-left: 10px;
+  margin: auto;
+}
+
+.t-pick .hour .up,
+.t-pick .hour .dwn,
+.t-pick .minutes .up,
+.t-pick .minutes .dwn{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0px;
+  height: 10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  cursor: pointer;
+}
+
+.t-pick .hour .up,
+.t-pick .minutes .up{
+  top: -10px;
+  border-bottom: 10px solid #aec6cf; 
+}
+
+.t-pick .hour .dwn,
+.t-pick .minutes .dwn{
+  bottom: -10px;
+  border-top: 10px solid #aec6cf; 
+}
+
+.t-pick .border{
+  font-size: 3rem;
+  font-weight: bold;
+  color: #aec6cf;
+}
+
+.t-amPm{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.t-amPm .radio{
+  background-color: #aec6cf;
+  width: 100px;
+  display: inline-block;
+  border-radius: 10px;
+  height: 40px;
+  padding: 2px;
+  position: relative;
+  zoom: 1;
+  margin-bottom: 1rem;
+}
+
+.t-amPm .radio:before, .t-amPm .radio:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.t-amPm .radio:after {
+  clear: both;
+}
+
+.t-amPm .radio label{
+  float: left;
+  width: 50%;
+  position: relative;
+  z-index: 2;
+  line-height: 40px;
+  cursor: pointer;
+  color: #c8e4f4;
+  border-radius: 10px;
+}
+
+.t-amPm .radio input[type="radio"] {
+  display: none;
+}
+.t-amPm .radio input[type="radio"]:checked + label {
+  color: #007DA6;
+  font-weight: bold;
+}
+.t-amPm .radio span {
+  position: relative;
+  z-index: 1;
+  top: -40px;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  display: block;
+  border-radius: 10px;
+  background-color: #FFF;
+  transition: all 200ms ease;
+}
+.t-amPm .radio span.right {
+  left: 50%;
+  border-radius: 10px;
+  transition: all 200ms ease;
+}
+
+/* input[type="radio"]{
+ appearance: none;
+}
+
+.t-amPm{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-amPm .radio{
+  position: relative;
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 0px 0px 10px #aec6cf;
+  margin: 1rem 0;
+}
+
+.t-amPm .am,
+.t-amPm .pm{
+  width: 50%;
+  height: 100%;
+}
+
+.t-amPm label{
+  width: 50px;
+  height: 50px;
+  background-size: 50px 50px;
+  background: linear-gradient(to bottom, white 0, white 90px, #2c2c2c 20px, #2c2c2c 50px);
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  top: 0;
+  transition: 0.3s;
+}
+
+.t-amPm .radio span{
+  height: 20px;
+  width: 30px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #2c2c2c;
+}
+
+.t-amPm .radio input:checked + label{
+  background-position: 0 -20px;
+} */
